@@ -1,0 +1,77 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Ultrasound QA</title>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+         <!-- Fonts -->
+        <link href='https://fonts.googleapis.com/css?family=Slabo+13px|Lato' rel='stylesheet' type='text/css'>
+        <!-- Custom css -->
+        <link rel="stylesheet" href="{% static 'css/cerulean.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/usqadb.css' %}">
+        {{ form.media }}
+    </head>
+
+    <body>
+        <nav class="navbar navbar-default">
+        <div class='container-fluid'>
+            <div class="navbar-header">
+                <a class="navbar-brand" href='/'>Ultrasound QA</a>
+            </div>
+                <ul class="nav navbar-nav">
+                    <li><a href='/'>Home</a></li>
+                    <li><a href='/qa_form/'>Submit Quality Audit</a></li>
+                    <li><a href='/report_issued/'>Report issued</a></li>
+                    <li><a href='/machine_list/'>Previous Audits</a></li>
+                    <li><a href='/search/'>Audit Search</a></li>
+                    <li><a href='/machine_detail_search/'>Machine detail</a></li>
+                    <li><a href='/new_machine_form/'>New Machine</a></li>
+                </ul>
+            <ul class='nav navbar-nav navbar-right'>
+                <li>
+                    {% if user.is_anonymous %}
+                    <a href="{% url 'django.contrib.auth.views.login' %}">Please login</a>
+                    {% else %}
+                <li>
+                    <a>Hello {{ user }}</a>
+                </li>
+                <li>
+                    <a href="{% url 'django.contrib.auth.views.logout' %}">Logout</a>
+                    {% endif %}
+                </li>
+                <li><a href='/admin/'>Admin</a></li>
+            </ul>
+        </div>
+        </nav>
+            <div class="conatiner">
+                {% block content %}
+                {% endblock %}
+            </div>
+    
+        <!-- more javascript links -->
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.min.js" ></script>
+        <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js" ></script>
+        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js" ></script>
+        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/3.0.0/js/bootstrap-datetimepicker.min.js" ></script>
+        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.4.0/lang/en-gb.js" ></script>
+        <script type="text/javascript">
+            $(function () {
+                $('#datetimepicker1').datetimepicker();
+            });
+        </script>
+        <script>
+            $(".nav a").on("click", function(){
+               $(".nav").find(".active").removeClass("active");
+               $(this).parent().addClass("active");
+            });
+        </script>
+        </body>
+</html>

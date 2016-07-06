@@ -1,0 +1,60 @@
+{% extends 'usqadb/base.html' %}
+
+{% load bootstrap3 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+
+{% block content %}
+
+<div class='container'>
+    <div class='row'>
+        <div class='col-sm-12'>
+            <h3>New Machine</h3>
+        </div>
+    </div>
+</div>
+
+<div class='container'>
+    <form role='form' method="POST" class="post-form">
+                {% csrf_token %}
+        <div class='row'>
+            <div class='col-sm-12'>
+                {% bootstrap_form machine %}
+            </div>
+        </div>
+        <div class='row'>
+            <div class='col-sm-12'>
+                <div class='well'>
+                    <h4>For the following fields, please check to see if records already exist in the database using the dropdown lists on the left.  This is in order to avoid duplication within the database.  If the record you need is not present, please enter your text in the fields to the right instead.</h4>
+                </div>
+            </div>
+        </div>
+        <div class='row'>
+            <div class='col-sm-6'>
+                {% bootstrap_form location_drop %}
+                {% bootstrap_form manufacturer_drop %}
+                {% bootstrap_form name_model_drop %}
+                {% bootstrap_form gateway_drop %}
+                {% bootstrap_form subnet_drop %}
+                {% bootstrap_form port_drop %}
+            </div>
+            <div class='col-sm-6'>
+                {% bootstrap_form location %}
+                {% bootstrap_form manufacturer %}
+                {% bootstrap_form name_model %}
+                {% bootstrap_form gateway %}
+                {% bootstrap_form subnet %}
+                {% bootstrap_form port %}
+            </div>
+        </div>
+        <div class='row'>
+            <div class='col-sm-12'>
+                {% buttons %}
+                <button type="submit" class="save btn btn-primary pull-right btn-block">Save</button>
+                {% endbuttons %}
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

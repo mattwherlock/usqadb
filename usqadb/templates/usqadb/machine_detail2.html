@@ -1,0 +1,180 @@
+{% extends 'usqadb/base.html' %}
+
+{% load bootstrap3 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+
+{% block content %}
+
+<h4>Searching for:</h4>
+<div class='container'>
+    <div class='row'>
+        <div class='col-sm-2'>
+            {% for search in search_cat %}
+                    <h5>{{ search }}:</h5>  
+            {% endfor %}
+        </div>
+        <div class='col-sm-4'>
+            {% for search in search_val %}
+                    <h5>{{ search }}</h5>  
+            {% endfor %}
+        </div>
+        <div class='col-sm-6'>
+            <h4><a href='/machine_detail_search/' class='btn btn-primary btn-sm pull-right' role='button'>Search Again</a></h4>
+        </div>
+    </div>
+</div>
+
+<div class='container'>
+    <div class='row'>
+        
+        {% for result in matched %}
+        
+        <div class='col-sm-6'>
+            <ul class='list-group'>
+                <li class='list-group-item'>
+                    <div class='row'>
+                        <div class='col-sm-6'>
+                            <label>MEMO</label>
+                        </div>
+                        <div class='col-sm-6>'>
+                            {{ result.memo }}
+                        </div>
+                    </div>
+                </li>
+                <li class='list-group-item'>
+                    <div class='row'>
+                        <div class='col-sm-6'>
+                            <label>CRIS</label>
+                        </div>
+                        <div class='col-sm-6>'>
+                            {{ result.cris }}
+                        </div>
+                    </div>
+                </li>
+                <li class='list-group-item'>
+                    <div class='row'>
+                        <div class='col-sm-6'>
+                            <label>Serial Number</label>
+                        </div>
+                        <div class='col-sm-6>'>
+                            {{ result.system_id }}
+                        </div>
+                    </div>
+                </li>
+                <li class='list-group-item'>
+                    <div class='row'>
+                        <div class='col-sm-6'>
+                            <label>AE Title</label>
+                        </div>
+                        <div class='col-sm-6>'>
+                            {{ result.ae }}
+                        </div>
+                    </div>
+                </li>
+                
+            </ul>
+        </div>
+        
+        <div class='col-sm-6'>
+            <ul class='list-group'>
+
+                <li class='list-group-item'>
+                    <div class='row'>
+                        <div class='col-sm-6'>
+                            <label>Name/Model</label>
+                        </div>
+                        <div class='col-sm-6>'>
+                            {{ result.id_name_model.name_model }}
+                        </div>
+                    </div>
+                </li>
+                <li class='list-group-item'>
+                    <div class='row'>
+                        <div class='col-sm-6'>
+                            <label>Manufacturer</label>
+                        </div>
+                        <div class='col-sm-6>'>
+                            {{ result.id_manufacturer.manufacturer }}
+                        </div>
+                    </div>
+                </li>
+                <li class='list-group-item'>
+                    <div class='row'>
+                        <div class='col-sm-6'>
+                            <label>Location</label>
+                        </div>
+                        <div class='col-sm-6>'>
+                            {{ result.id_location.location }}
+                        </div>
+                    </div>
+                </li>
+                <li class='list-group-item'>
+                    <div class='row'>
+                        <div class='col-sm-6'>
+                            <label>Status</label>
+                        </div>
+                        <div class='col-sm-6>'>
+                            {{ result.status }}
+                        </div>
+                    </div>
+                </li>
+                <li class='list-group-item'>
+                    <div class='row'>
+                        <div class='col-sm-6'>
+                            <label>PACS Integrated?</label>
+                        </div>
+                        <div class='col-sm-6>'>
+                            {{ result.integrated }}
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        {% endfor %}
+        <div class='container'>
+            <div class='row'>
+                <div class='col-sm-12'>
+                    <h3>Audits (last 25)</h3>
+                    <table class='table'>
+                         <tr>
+                            <th>Patient ID</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Audit Date</th>
+                            <th>Tested By:</th>
+                            <th>Test Location</th>
+                            <th>General Comments</th>
+                            <th>MEMO</th>
+                            <th>CRIS</th>
+                            <th>Probe Serial Number</th>
+                            <th>Probe Model</th>
+                            <th>Probe Comments</th>
+                            <th>Ok to Use?</th>
+                        </tr>
+                        {% for audit in audits %}
+                        <tr>
+                            <td>{{ audit.id_audit.patient_id }}</td>
+                            <td>{{ audit.id_audit.first_name }}</td>
+                            <td>{{ audit.id_audit.last_name }}</td>
+                            <td>{{ audit.id_audit.qa_date }}</td>
+                            <td>{{ audit.id_audit.tested_by }}</td>
+                            <td>{{ audit.id_audit.test_location }}</td>
+                            <td>{{ audit.id_audit.qa_comments }}</td>
+                            <td>{{ audit.id_audit.id_machine.memo }}</td>
+                            <td>{{ audit.id_audit.id_machine.cris }}</td>
+                            <td>{{ audit.probe_serial_no }}</td>
+                            <td>{{ audit.probe_model }}</td>
+                            <td>{{ audit.comments }}</td>
+                            <td>{{ audit.probe_ok_to_use }}</td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

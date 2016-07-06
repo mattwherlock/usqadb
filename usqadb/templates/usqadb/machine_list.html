@@ -1,0 +1,103 @@
+{% extends 'usqadb/base.html' %}
+
+{% load bootstrap3 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+
+{% block content %}
+
+
+<div class='container'>
+    <div class='row'>
+        
+        <div class='col-sm-12'>
+            <h3>Audit list for ultrasound machines</h3>
+        </div>
+        
+        <div class='row'>
+            <div class='col-sm-12'>
+                <h4>Machines with upcoming QA</h4>
+                <table class='table'>
+                    <tr>
+                        <th>Patient ID</th>
+                        <th>MEMO number</th>
+                        <th>CRIS number</th>
+                        <th>Name / Model</th>
+                        <th>Location</th>
+                        <th>Date of Last Audit</th>
+                        <th>Report issued?</th>
+                    </tr>
+                {% for l in late %}
+                    <tr>
+                        <td>{{ l.patient_id }}</td>
+                        <td>{{ l.id_machine.memo }}</td>
+                        <td>{{ l.id_machine.cris }}</td>
+                        <td>{{ l.id_machine.id_name_model.name_model }}</td>
+                        <td>{{ l.id_machine.id_location.location }}</td>
+                        <td>{{ l.qa_date }}</td>
+                        <td>{{ l.report_issued }}</td>
+                    </tr>
+                {% endfor %}
+                </table>
+            </div>
+        </div>
+        
+        <div class='row'>
+            <div class='col-sm-12'>
+                <h4>QA with reports to be issued</h4>
+                <table class='table'>
+                    <tr>
+                        <th>Patient ID</th>
+                        <th>MEMO number</th>
+                        <th>CRIS number</th>
+                        <th>Name / Model</th>
+                        <th>Location</th>
+                        <th>Date of Audit</th>
+                        <th>Report issued?</th>
+                    </tr>
+                {% for r in report_to_issue %}
+                    <tr>
+                        <td>{{ r.patient_id }}</td>
+                        <td>{{ r.id_machine.memo }}</td>
+                        <td>{{ r.id_machine.cris }}</td>
+                        <td>{{ r.id_machine.id_name_model.name_model }}</td>
+                        <td>{{ r.id_machine.id_location.location }}</td>
+                        <td>{{ r.qa_date }}</td>
+                        <td>{{ r.report_issued }}</td>
+                    </tr>
+                {% endfor %}
+                </table>
+            </div>
+        </div>
+        
+        <div class='row'>
+            <div class='col-sm-12'>
+                <h4>Last 25 audits</h4>
+                <table class='table'>
+                    <tr>
+                        <th>Patient ID</th>
+                        <th>MEMO number</th>
+                        <th>CRIS number</th>
+                        <th>Name / Model</th>
+                        <th>Location</th>
+                        <th>Date of Audit</th>
+                        <th>Report issued?</th>
+                    </tr>
+                {% for e in entry %}
+                    <tr>
+                        <td>{{ e.patient_id }}</td>
+                        <td>{{ e.id_machine.memo }}</td>
+                        <td>{{ e.id_machine.cris }}</td>
+                        <td>{{ e.id_machine.id_name_model.name_model }}</td>
+                        <td>{{ e.id_machine.id_location.location }}</td>
+                        <td>{{ e.qa_date }}</td>
+                        <td>{{ e.report_issued }}</td>
+                    </tr>
+                {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+</div>    
+{% endblock %}

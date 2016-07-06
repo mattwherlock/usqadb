@@ -1,0 +1,70 @@
+{% extends 'usqadb/base.html' %}
+
+{% load bootstrap3 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+
+{% block content %}
+
+
+<h4>Searching for:</h4>
+<div class='container'>
+    <div class='row'>
+        <div class='col-sm-2'>
+            {% for search in search_cat %}
+                    <h5>{{ search }}:</h5>  
+            {% endfor %}
+        </div>
+        <div class='col-sm-4'>
+            {% for search in search_val %}
+                    <h5>{{ search }}</h5>  
+            {% endfor %}
+        </div>
+        <div class='col-sm-6'>
+            <h4><a href='/search/' class='btn btn-primary btn-sm pull-right' role='button'>Search Again</a></h4>
+        </div>
+    </div>
+</div>
+
+<div class='container'>
+    <div class='row'>
+        <div class='col-sm-12'>
+            <h3>Audit and Probe</h3>
+            <table class='table'>
+                 <tr>
+                    <th>Patient ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Audit Date</th>
+                    <th>Comments</th>
+                    <th>MEMO</th>
+                    <th>CRIS</th>
+                    <th>Probe Serial Number</th>
+                    <th>Probe Model</th>
+                    <th>Comments</th>
+                    <th>Ok to Use?</th>
+                    <th>Report issued?</th>
+                </tr>
+            {% for m in matched %}
+                <tr>
+                    <td>{{ m.id_audit.patient_id }}</td>
+                    <td>{{ m.id_audit.first_name }}</td>
+                    <td>{{ m.id_audit.last_name }}</td>
+                    <td>{{ m.id_audit.qa_date }}</td>
+                    <td>{{ m.id_audit.qa_comments }}</td>
+                    <td>{{ m.id_audit.id_machine.memo }}</td>
+                    <td>{{ m.id_audit.id_machine.cris }}</td>
+                    <td>{{ m.probe_serial_no }}</td>
+                    <td>{{ m.probe_model }}</td>
+                    <td>{{ m.comments }}</td>
+                    <td>{{ m.probe_ok_to_use }}</td>
+                    <td>{{ m.id_audit.report_issued }}</td>
+                </tr>
+            {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

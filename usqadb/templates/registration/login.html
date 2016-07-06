@@ -1,0 +1,46 @@
+{% extends "usqadb/base.html" %}
+
+{% load bootstrap3 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+
+{% block content %}
+
+{% if form.errors %}
+
+<h3>Your username and password didn't match. Please try again.</h3>
+
+{% endif %}
+
+<div class='container'>
+    <div class='row'>
+        <div class='col-sm-12'>
+            <h3>Login</h3>
+        </div>
+    </div>
+    <div class='row'>
+        <div class='col-sm-4 col-sm-offset-4'>
+            <form method="POST" class="post-form" action="{% url 'django.contrib.auth.views.login' %}">
+            {% csrf_token %}
+                
+                <div class='form-group'>
+                    <div class='col-sm-4' ><p>{{ form.username.label_tag }}</p></div>
+                    <div class='col-sm-8'><p>{{ form.username }}</p></div>
+                </div>
+                <div class='form-group'>
+                    <div class='col-sm-4' ><p>{{ form.password.label_tag }}</p></div>
+                    <div class='col-sm-8'><p>{{ form.password }}</p></div>
+                </div>
+
+                {% buttons %}
+                <div class='col-sm-12'>
+                <button type="submit" class="save btn btn-primary btn-block">Login</button>
+                <input type="hidden" name="next" value="{{ next }}" />
+                </div>
+                {% endbuttons %}
+            </form>
+        </div>
+    </div> 
+</div>
+{% endblock %}

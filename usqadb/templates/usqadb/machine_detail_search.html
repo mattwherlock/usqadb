@@ -1,0 +1,31 @@
+{% extends 'usqadb/base.html' %}
+
+{% load bootstrap3 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+
+{% block content %}
+
+<div class='container'>
+    <div class='row'>
+        <div class='col-sm-6'>
+            <h4>Machine Search</h4>
+            <form role='form' method="POST" class="post-form">
+                {% csrf_token %}
+                <div class='row'>
+                    <div class='col-sm-12'>
+                        {% bootstrap_form memo %}
+                        {% bootstrap_form serial %}
+                        {% bootstrap_form location %}
+                        {% bootstrap_form model %}
+                        {% buttons %}
+                        <button type="submit" class="save btn btn-primary">Search</button>
+                        {% endbuttons %}
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

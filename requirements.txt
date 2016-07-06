@@ -1,0 +1,12 @@
+Django==1.9.6
+django-bootstrap3==7.0.1
+django-bootstrap3-datetimepicker==2.2.3
+django-crispy-forms==1.6.0
+numpy==1.11.0
+pandas==0.18.1
+python-dateutil==2.5.3
+pytz==2016.4
+scipy==0.17.1
+six==1.10.0
+SQLAlchemy==1.0.12
+xlrd==1.0.0
