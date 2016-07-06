@@ -11,19 +11,29 @@
     <div class='row'>
         <div class='col-sm-6'>
             <h4>Report issued</h4>
-            <form role='form' method="POST" class="post-form">
-                {% csrf_token %}
-                <div class='row'>
-                    <div class='col-sm-12'>
-                        {% bootstrap_form audit %}
-                        {% bootstrap_form issue_date %}
-                        {% buttons %}
-                        <button type="submit" class="save btn btn-primary">Submit</button>
-                        {% endbuttons %}
-                    </div>
-                </div>
-            </form>
         </div>
     </div>
+            
+    <div class='row'>
+        <div class='col-sm-12'>
+            <div class='well'>
+                <h4>Once the report for a QA has been issued, select the patient ID for the audit and select the date the report was sent.  This will add a flag to the QA record.</h4>
+            </div>
+        </div>
+    </div>
+            
+            
+    <form role='form' method="POST" class="post-form">
+        {% csrf_token %}
+        <div class='row'>
+            <div class='col-sm-6 col-sm-offset-3'>
+                {% bootstrap_form audit %}
+                {% bootstrap_form issue_date %}
+                {% buttons %}
+                <button type="submit" class="save btn btn-primary">Submit</button>
+                {% endbuttons %}
+            </div>
+        </div>
+    </form>
 </div>
 {% endblock %}

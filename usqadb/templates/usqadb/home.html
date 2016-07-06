@@ -2,7 +2,118 @@
 {% block content %}
 <div class='container-fluid'>
     <div class='jumbotron'>
-        <h2>Somewhere to start...</h2>
+        <div class='row'>
+            <div class='col-sm-12'>
+                <h1>Ultrasound QA</h1>
+            </div>
+            <div class='row'>
+                <div class='col-sm-8 col-sm-offset-2'>
+                    <h3>A database to record and track QA for ultrasound machines</h3>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+
+<div class='container'>
+    
+    <div class='row'>
+        <div class='col-sm-2'>
+           
+        </div>
+        <div class='col-sm-2'>
+            <h4>
+                <a class="btn btn-primary btn-block" href='/qa_form/'>Submit Quality Audit</a>
+            </h4>
+        </div>
+        <div class='col-sm-8'>
+            <h5>
+            Enter the details for a new QA, including information for the machine itself and for any attached probes.
+            </h5>
+        </div>
+    </div>
+    
+    <div class='row'>
+        <div class='col-sm-2'>
+
+        </div>
+        <div class='col-sm-2'>
+            <h4>
+                <a class="btn btn-primary btn-block" href='/report_issued/'>Report Issued</a>
+            </h4>
+        </div>
+        <div class='col-sm-8'>
+            <h5>
+            Following completion of a QA, indicate when the report has been sent out.
+            </h5>
+        </div>
+    </div>
+    
+    <div class='row'>
+        <div class='col-sm-2'>
+
+        </div>
+        <div class='col-sm-2'>
+            <h4>
+                <a class="btn btn-primary btn-block" href='/machine_list/'>Previous Audits</a>
+            </h4>
+        </div>
+        <div class='col-sm-8'>
+            <h5>
+            Tables of records of previous QA showing machines where the next QA is upcoming, machines where a report has not been issued yet, and general details of recent QAs.
+            </h5>
+        </div>
+    </div>
+    
+    <div class='row'>
+        <div class='col-sm-2'>
+
+        </div>
+        <div class='col-sm-2'>
+            <h4>
+                <a class="btn btn-primary btn-block" href='/search/'>Audit Search</a>
+            </h4>
+        </div>
+        <div class='col-sm-8'>
+            <h5>
+            Search for details of QA records based on a range of factors as required.
+            </h5>
+        </div>
+    </div>
+    
+    <div class='row'>
+        <div class='col-sm-2'>
+
+        </div>
+        <div class='col-sm-2'>
+            <h4>
+                <a class="btn btn-primary btn-block" href='/machine_detail_search/'>Machine Detail</a>
+            </h4>
+        </div>
+        <div class='col-sm-8'>
+            <h5>
+            Search for records for machines, including specifics of machines themselves as well as recent QA records.
+            </h5>
+        </div>
+    </div>
+    
+    <div class='row'>
+        <div class='col-sm-2'>
+
+        </div>
+        <div class='col-sm-2'>
+            <h4>
+                <a class="btn btn-primary btn-block" href='/new_machine_form/'>New Machine</a>
+            </h4>
+        </div>
+        <div class='col-sm-8'>
+            <h5>
+            Submit details of new ultrasound machines to the database.
+            </h5>
+        </div>
+    </div>
+    
+</div>
+
+
 {% endblock %}

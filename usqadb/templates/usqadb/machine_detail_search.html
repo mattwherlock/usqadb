@@ -10,22 +10,32 @@
 <div class='container'>
     <div class='row'>
         <div class='col-sm-6'>
-            <h4>Machine Search</h4>
-            <form role='form' method="POST" class="post-form">
-                {% csrf_token %}
-                <div class='row'>
-                    <div class='col-sm-12'>
-                        {% bootstrap_form memo %}
-                        {% bootstrap_form serial %}
-                        {% bootstrap_form location %}
-                        {% bootstrap_form model %}
-                        {% buttons %}
-                        <button type="submit" class="save btn btn-primary">Search</button>
-                        {% endbuttons %}
-                    </div>
-                </div>
-            </form>
+            <h3>Machine Search</h3>
         </div>
     </div>
+          
+    <div class='row'>
+        <div class='col-sm-12'>
+            <div class='well'>
+                <h4>Search for records for machines, including specifics of machines themselves as well as recent QA records.</h4>
+            </div>
+        </div>
+    </div>
+            
+            
+    <form role='form' method="POST" class="post-form">
+        {% csrf_token %}
+        <div class='row'>
+            <div class='col-sm-12'>
+                {% bootstrap_form memo %}
+                {% bootstrap_form serial %}
+                {% bootstrap_form location %}
+                {% bootstrap_form model %}
+                {% buttons %}
+                <button type="submit" class="save btn btn-primary">Search</button>
+                {% endbuttons %}
+            </div>
+        </div>
+    </form>
 </div>
 {% endblock %}
