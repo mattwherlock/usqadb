@@ -301,7 +301,8 @@ def new_machine(request):
         subnet_drop = SearchFormSubnet()
         port_drop = SearchFormPort()
         return render(request, 'usqadb/new_machine_form.html', {'machine':machine,'location':location,'manufacturer':manufacturer,'name_model':name_model,'gateway':gateway,'subnet':subnet,'port':port,'location_drop':location_drop,'manufacturer_drop':manufacturer_drop,'name_model_drop':name_model_drop,'gateway_drop':gateway_drop,'subnet_drop':subnet_drop,'port_drop':port_drop})
-    
+
+@login_required    
 def report_issued(request):
     if request.method == 'POST':
         audit = ReportAuditForm(request.POST)
