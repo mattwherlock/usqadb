@@ -1,1 +1,0 @@
-web: gunicorn usqadb.wsgi --log-file -
